@@ -7,12 +7,10 @@ import jakarta.persistence.Access;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/tasks")
@@ -32,6 +30,20 @@ public class TaskController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable long id){
         return new ResponseEntity<>(taskServices.getTaskById(id), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/{catId}/{taskId}")
+    public ResponseEntity<Task> addNewTask(@PathVariable Long catId, @PathVariable long taskId, @RequestBody Task task){
+        return new ResponseEntity<>(taskServices.saveNewTask(catId, taskId, task), HttpStatus.CREATED);
+    }
+
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestParam Optional<String> content, @RequestParam Optional<Boolean> completed){
+        if(content.isPresent()){
+            return new ResponseEntity<>(taskServices.updateTaskContent(id, content.get()), HttpStatus.OK);
+        } if (completed.isPresent()){
+            return new ResponseEntity<>(taskServices.markAsCompleted(id, completed.get()), HttpStatus.OK);
+        } return new ResponseEntity<>(taskServices.getTaskById(id), HttpStatus.OK);
     }
 
 }
