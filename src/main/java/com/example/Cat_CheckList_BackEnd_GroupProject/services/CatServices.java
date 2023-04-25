@@ -6,6 +6,8 @@ import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.CatRepository
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CatServices {
     @Autowired
@@ -15,5 +17,10 @@ public class CatServices {
     }
 
     public void saveCat(Cat cat) {
+    }
+
+    public List<Cat> getAllCats(){
+        return catRepository.findAll();
+
     }
 }
