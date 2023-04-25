@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity(name = "cat")
+@Entity(name = "cats")
 
 public class Cat {
 
