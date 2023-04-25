@@ -11,7 +11,7 @@ import java.util.List;
 public class TaskType {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "task_type_name")
     private TaskTypeEnums taskTypeName;
