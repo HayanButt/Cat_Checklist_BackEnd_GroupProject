@@ -53,4 +53,9 @@ public class TaskServices {
         task.setCompleted(true);
         return taskRepository.save(task);
     }
+
+
+    public void deleteTask(Long id) {
+        taskRepository.deleteById(id);
+    }
 }
