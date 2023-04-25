@@ -40,4 +40,10 @@ public class UserServices {
         }
         userRepository.deleteById(id);
     }
+
+    public User updateUserName(String name, Long id) {
+        User user = userRepository.findById(id).get();
+        user.setName(name);
+        return userRepository.save(user);
+    }
 }
