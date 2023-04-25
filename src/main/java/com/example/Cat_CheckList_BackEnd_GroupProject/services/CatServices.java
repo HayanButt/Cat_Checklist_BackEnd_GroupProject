@@ -13,4 +13,7 @@ public class CatServices {
     public void addNewCat(Cat cat){
         catRepository.save(cat);
     }
+
+    public void saveCat(Cat cat) {
+    }
 }

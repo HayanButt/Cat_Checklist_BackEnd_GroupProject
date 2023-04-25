@@ -85,4 +85,9 @@ public class Cat {
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
+
+    public void removeUser(User user) {
+        ;
+
+    }
 }
