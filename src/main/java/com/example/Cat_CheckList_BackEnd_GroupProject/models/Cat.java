@@ -22,9 +22,8 @@ public class Cat {
     private String birthday;
     @Column
     private User user;
-    @ManyToOne
-    @JoinColumn(name = "task_id")
-    @JsonIgnoreProperties({"cats"})
+    @OneToMany(mappedBy = "cat")
+    @JsonIgnoreProperties({"cat"})
     private List<Task> tasks;
 
 
