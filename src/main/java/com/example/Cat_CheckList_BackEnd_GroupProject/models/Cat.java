@@ -29,8 +29,8 @@ public class Cat {
     private List<Task> tasks;
 
 
-    public Cat( User user, long id, String name, String birthday){
-        this.id = id;
+    public Cat( User user, String name, String birthday){
+
         this.name = name;
         this.birthday = birthday;
         this.tasks = new ArrayList<>();
