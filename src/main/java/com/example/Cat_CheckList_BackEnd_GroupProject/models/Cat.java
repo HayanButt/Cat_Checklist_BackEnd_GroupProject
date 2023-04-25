@@ -13,18 +13,18 @@ public class Cat {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY);
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column
     private String name;
     @Column
     private String birthday;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties({"cats"})
-    private User user;
     @Column
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    @JsonIgnoreProperties({"cats"})
     private List<Task> tasks;
 
 
