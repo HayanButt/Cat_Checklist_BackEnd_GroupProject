@@ -16,8 +16,6 @@ public class UserServices {
     UserRepository userRepository;
     @Autowired
     CatRepository catRepository;
-    @Autowired
-    CatServices catServices;
 
     public List<User> getAllUsers(){
         return userRepository.findAll();
@@ -38,8 +36,7 @@ public class UserServices {
     public void deleteUser(Long id) {
         User user = userRepository.findById(id).get();
         for (Cat cat : user.getCats()){
-            cat.removeUser(user);
-            catServices.saveCat(cat);
+            catRepository.delete(cat);
         }
         userRepository.deleteById(id);
     }

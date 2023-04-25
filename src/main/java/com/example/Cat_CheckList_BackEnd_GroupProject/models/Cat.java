@@ -86,8 +86,4 @@ public class Cat {
         this.tasks = tasks;
     }
 
-    public void removeUser(User user) {
-        ;
-
-    }
 }
