@@ -20,8 +20,8 @@ public class DataLoader implements ApplicationRunner {
     UserServices userServices;
     @Autowired
     CatServices catServices;
-    @Autowired
-    TaskServices taskServices;
+//    @Autowired
+//    TaskServices taskServices;
 
     @Override
     public void run(ApplicationArguments args) throws Exception{
