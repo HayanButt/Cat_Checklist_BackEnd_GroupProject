@@ -20,7 +20,9 @@ public class Cat {
     private String name;
     @Column
     private String birthday;
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"cats"})
     private User user;
     @OneToMany(mappedBy = "cat")
     @JsonIgnoreProperties({"cat"})

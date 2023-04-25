@@ -15,8 +15,8 @@ public class TaskType {
     private long id;
     @Column(name = "task_type_name")
     private TaskTypeEnums taskTypeName;
-    @OneToMany(mappedBy = "task_type")
-    @JsonIgnoreProperties({"task_type"})
+    @OneToMany(mappedBy = "taskType")
+    @JsonIgnoreProperties({"task_types"})
     private List<Task> tasks;
 
     public TaskType(TaskTypeEnums taskTypeName){

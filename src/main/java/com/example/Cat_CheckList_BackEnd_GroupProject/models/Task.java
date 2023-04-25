@@ -3,7 +3,7 @@ package com.example.Cat_CheckList_BackEnd_GroupProject.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "task")
 public class Task {
 
     @Id
