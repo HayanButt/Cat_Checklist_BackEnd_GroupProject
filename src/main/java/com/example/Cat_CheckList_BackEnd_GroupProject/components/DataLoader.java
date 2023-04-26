@@ -1,10 +1,8 @@
 package com.example.Cat_CheckList_BackEnd_GroupProject.components;
 
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.*;
-import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.CatRepository;
-import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.TaskRepository;
-import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.UserRepository;
-import com.example.Cat_CheckList_BackEnd_GroupProject.services.CatServices;
+import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.AnimalTypeRepository;
+import com.example.Cat_CheckList_BackEnd_GroupProject.services.AnimalServices;
 import com.example.Cat_CheckList_BackEnd_GroupProject.services.TaskServices;
 import com.example.Cat_CheckList_BackEnd_GroupProject.services.TaskTypeServices;
 import com.example.Cat_CheckList_BackEnd_GroupProject.services.UserServices;
@@ -13,15 +11,20 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
     UserServices userServices;
     @Autowired
-    CatServices catServices;
+    AnimalServices animalServices;
     @Autowired
     TaskServices taskServices;
+
+    @Autowired
+    AnimalTypeRepository animalTypeRepository;
 
     @Autowired
     TaskTypeServices taskTypeServices;
@@ -44,20 +47,20 @@ public class DataLoader implements ApplicationRunner {
 
 //        Cats
 
-      Cat cat1 = new Cat(user2, "Theo", "25/12/2021");
-      catServices.addNewCat(cat1);
+      Animal animal1 = new Animal(user2, "Theo", "25/12/2021");
+      animalServices.addNewAnimal(animal1);
 
-      Cat cat2 = new Cat(user2, "Tora", "07/01/2022");
-      catServices.addNewCat(cat2);
+      Animal animal2 = new Animal(user2, "Tora", "07/01/2022");
+      animalServices.addNewAnimal(animal2);
 
-      Cat cat3 = new Cat(user1, "Lina", "25/08/2022");
-      catServices.addNewCat(cat3);
+      Animal animal3 = new Animal(user1, "Lina", "25/08/2022");
+      animalServices.addNewAnimal(animal3);
 
-      Cat cat4 = new Cat(user3, "Wilbur", "14/07/2016");
-      catServices.addNewCat(cat4);
+      Animal animal4 = new Animal(user3, "Wilbur", "14/07/2016");
+      animalServices.addNewAnimal(animal4);
 
-      Cat cat5 = new Cat(user4, "Nicky", "16/05/2019");
-      catServices.addNewCat(cat5);
+      Animal animal5 = new Animal(user4, "Nicky", "16/05/2019");
+      animalServices.addNewAnimal(animal5);
 
 //      TaskType
         TaskType taskType1 = new TaskType(TaskTypeEnums.FEEDING);
@@ -81,16 +84,27 @@ public class DataLoader implements ApplicationRunner {
         TaskType taskType7 = new TaskType(TaskTypeEnums.MAINTENANCE);
         taskTypeServices.saveTaskType(taskType7);
 
-        TaskType taskType8 = new TaskType(TaskTypeEnums.VETENARYCARE);
+        TaskType taskType8 = new TaskType(TaskTypeEnums.VETERINARYCARE);
         taskTypeServices.saveTaskType(taskType8);
 
 //      Tasks
-        Task task1 = new Task("brushing hair", false, "26.04.2023", Priority.LOW, cat4, taskType2);
+        Task task1 = new Task("brushing hair", false, "26.04.2023", Priority.LOW, animal4, taskType2);
         taskServices.saveTask(task1);
-        Task task2 = new Task("changing the water", false, "26.04.2023", Priority.LOW, cat4, taskType4);
+        Task task2 = new Task("changing the water", false, "26.04.2023", Priority.LOW, animal4, taskType4);
         taskServices.saveTask(task2);
-        Task task3 = new Task("doing nails", false, "26.04.2023", Priority.LOW, cat4, taskType2);
+        Task task3 = new Task("doing nails", false, "26.04.2023", Priority.LOW, animal4, taskType2);
         taskServices.saveTask(task3);
+
+        AnimalType animalType = new AnimalType("Cat");
+
+        ArrayList<TaskTypeEnums> catTasks = new ArrayList<>();
+        catTasks.add(TaskTypeEnums.LITTERBOX);
+        catTasks.add(TaskTypeEnums.FEEDING);
+        catTasks.add(TaskTypeEnums.GROOMING);
+        animalType.setAvailableTasks(catTasks);
+        animalTypeRepository.save(animalType);
     }
+
+
 
 }

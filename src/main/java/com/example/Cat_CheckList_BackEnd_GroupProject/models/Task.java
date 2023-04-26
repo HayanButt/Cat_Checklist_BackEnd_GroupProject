@@ -20,21 +20,21 @@ public class Task {
     private Priority priority;
 
     @ManyToOne
-    @JoinColumn(name = "cat_id")
+    @JoinColumn(name = "animal_id")
     @JsonIgnoreProperties({"tasks"})
-    private Cat cat;
+    private Animal animal;
     @ManyToOne
     @JoinColumn(name = "task_type_id")
     @JsonIgnoreProperties({"tasks"})
     private TaskType taskType;
 
 
-    public Task(String content, boolean isCompleted, String dueDate, Priority priority , Cat cat , TaskType taskType){
+    public Task(String content, boolean isCompleted, String dueDate, Priority priority , Animal animal, TaskType taskType){
         this.content = content;
         this.isCompleted = isCompleted;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.cat = cat;
+        this.animal = animal;
         this.taskType = taskType;
     }
 
@@ -85,12 +85,12 @@ public class Task {
         this.priority = priority;
     }
 
-    public Cat getCat() {
-        return cat;
+    public Animal getAnimal() {
+        return animal;
     }
 
-    public void setCat(Cat cat) {
-        this.cat = cat;
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
     }
 
     public TaskType getTaskType() {

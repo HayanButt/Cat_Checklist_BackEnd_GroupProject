@@ -1,8 +1,8 @@
 package com.example.Cat_CheckList_BackEnd_GroupProject.services;
 
-import com.example.Cat_CheckList_BackEnd_GroupProject.models.Cat;
+import com.example.Cat_CheckList_BackEnd_GroupProject.models.Animal;
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.User;
-import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.CatRepository;
+import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.AnimalRepository;
 import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class UserServices {
     @Autowired
     UserRepository userRepository;
     @Autowired
-    CatRepository catRepository;
+    AnimalRepository animalRepository;
 
     public List<User> getAllUsers(){
         return userRepository.findAll();
@@ -35,8 +35,8 @@ public class UserServices {
 
     public void deleteUser(Long id) {
         User user = userRepository.findById(id).get();
-        for (Cat cat : user.getCats()){
-            catRepository.delete(cat);
+        for (Animal animal : user.getAnimals()){
+            animalRepository.delete(animal);
         }
         userRepository.deleteById(id);
     }
