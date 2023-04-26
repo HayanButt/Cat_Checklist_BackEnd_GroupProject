@@ -46,4 +46,5 @@ public class UserServices {
         user.setName(name);
         return userRepository.save(user);
     }
+
 }
