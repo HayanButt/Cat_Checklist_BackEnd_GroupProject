@@ -2,6 +2,7 @@ package com.example.Cat_CheckList_BackEnd_GroupProject.services;
 
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.Cat;
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.Task;
+import com.example.Cat_CheckList_BackEnd_GroupProject.models.TaskDTO;
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.TaskType;
 import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.CatRepository;
 import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.TaskRepository;
@@ -35,16 +36,19 @@ public class TaskServices {
         return taskRepository.findById(id).get();
     }
 
-    public Task saveNewTask(Long id, Long taskId, Task task) {
-        Cat cat = catRepository.findById(id).get(); // taskDTO.getCatId()
-        TaskType taskType = taskTypeRepository.findById(taskId).get();
-        task = new Task(task.getContent(), task.isCompleted(), task.getDueDate(), task.getPriority(), cat, taskType);
+    public Task saveNewTask(TaskDTO taskDTO) {
+        Cat cat = catRepository.findById(taskDTO.getCatId()).get();
+        TaskType taskType = taskTypeRepository.findById(taskDTO.getTaskTypeId()).get();
+        Task task = new Task(taskDTO.getContent(), taskDTO.isCompleted(), taskDTO.getDueDate(),taskDTO.getPriority(), cat , taskType);
         return taskRepository.save(task);
     }
 
-    public Task updateTaskContent(Long id, String content) {
+    public Task updateTask(TaskDTO taskDTO, Long id) {
         Task task = taskRepository.findById(id).get();
-        task.setContent(content);
+        task.setContent(taskDTO.getContent());
+        task.setCompleted(taskDTO.isCompleted());
+        task.setDueDate(taskDTO.getDueDate());
+        task.setPriority(taskDTO.getPriority());
         return taskRepository.save(task);
     }
 

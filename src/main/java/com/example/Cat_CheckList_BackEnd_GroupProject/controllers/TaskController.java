@@ -1,6 +1,7 @@
 package com.example.Cat_CheckList_BackEnd_GroupProject.controllers;
 
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.Task;
+import com.example.Cat_CheckList_BackEnd_GroupProject.models.TaskDTO;
 import com.example.Cat_CheckList_BackEnd_GroupProject.services.TaskServices;
 import com.example.Cat_CheckList_BackEnd_GroupProject.services.UserServices;
 import jakarta.persistence.Access;
@@ -32,18 +33,25 @@ public class TaskController {
         return new ResponseEntity<>(taskServices.getTaskById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/{catId}/{taskId}")
-    public ResponseEntity<Task> addNewTask(@PathVariable Long catId, @PathVariable long taskId, @RequestBody Task task){
-        return new ResponseEntity<>(taskServices.saveNewTask(catId, taskId, task), HttpStatus.CREATED);
+    @PostMapping
+    public ResponseEntity<Task> addNewTask(@RequestBody TaskDTO taskDTO){
+        Task task = taskServices.saveNewTask(taskDTO);
+        return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
 
-    @PatchMapping(value = "/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestParam Optional<String> content, @RequestParam Optional<Boolean> completed){
-        if(content.isPresent()){
-            return new ResponseEntity<>(taskServices.updateTaskContent(id, content.get()), HttpStatus.OK);
-        } if (completed.isPresent()){
-            return new ResponseEntity<>(taskServices.markAsCompleted(id, completed.get()), HttpStatus.OK);
-        } return new ResponseEntity<>(taskServices.getTaskById(id), HttpStatus.OK);
+//    @PatchMapping(value = "/{id}")
+//    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestParam Optional<String> content, @RequestParam Optional<Boolean> completed){
+//        if(content.isPresent()){
+//            return new ResponseEntity<>(taskServices.updateTaskContent(id, content.get()), HttpStatus.OK);
+//        } if (completed.isPresent()){
+//            return new ResponseEntity<>(taskServices.markAsCompleted(id, completed.get()), HttpStatus.OK);
+//        } return new ResponseEntity<>(taskServices.getTaskById(id), HttpStatus.OK);
+//    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Task> updateTask(@RequestBody TaskDTO taskDTO, @PathVariable Long id){
+        Task task = taskServices.updateTask(taskDTO, id);
+        return new ResponseEntity<>(task, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
