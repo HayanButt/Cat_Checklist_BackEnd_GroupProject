@@ -1,6 +1,7 @@
 package com.example.Cat_CheckList_BackEnd_GroupProject.controllers;
 
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.Cat;
+import com.example.Cat_CheckList_BackEnd_GroupProject.models.CatDTO;
 import com.example.Cat_CheckList_BackEnd_GroupProject.services.CatServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,9 +26,10 @@ public class CatController {
         return new ResponseEntity<>(catServices.getCatById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/{id}")
-    public ResponseEntity<Cat> addNewCat(@PathVariable Long id, @RequestBody Cat cat){
-        return new ResponseEntity<>(catServices.saveNewCat(cat,id), HttpStatus.CREATED);
+    @PostMapping
+    public ResponseEntity<Cat> addNewCat(@RequestBody CatDTO catDTO){
+        Cat cat = catServices.saveNewCat(catDTO);
+        return new ResponseEntity<>(cat, HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/{id}")

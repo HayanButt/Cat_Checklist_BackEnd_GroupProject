@@ -1,6 +1,7 @@
 package com.example.Cat_CheckList_BackEnd_GroupProject.services;
 
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.Cat;
+import com.example.Cat_CheckList_BackEnd_GroupProject.models.CatDTO;
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.User;
 import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.CatRepository;
 import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.UserRepository;
@@ -19,8 +20,6 @@ public class CatServices {
         catRepository.save(cat);
     }
 
-    public void saveCat(Cat cat) {
-    }
 
     public List<Cat> getAllCats(){
         return catRepository.findAll();
@@ -31,10 +30,11 @@ public class CatServices {
 
     }
 
-    public Cat saveNewCat(Cat cat, long id) {
-       User user = userRepository.findById(id).get();
-       cat = new Cat(user,cat.getName(),cat.getBirthday());
-       return catRepository.save(cat);
+    public Cat saveNewCat(CatDTO catDTO) {
+
+        User user = userRepository.findById(catDTO.getUserId()).get();
+        Cat cat = new Cat(user,catDTO.getName(),catDTO.getBirthday());
+        return catRepository.save(cat);
     }
 
 
