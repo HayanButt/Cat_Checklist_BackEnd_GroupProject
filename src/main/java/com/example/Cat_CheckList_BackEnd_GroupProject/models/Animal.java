@@ -7,11 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity(name = "cats")
 
-public class Cat {
-
-
+@Entity(name = "animals")
+public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -22,14 +20,20 @@ public class Cat {
     private String birthday;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties({"cats"})
+    @JsonIgnoreProperties({"animals"})
     private User user;
-    @OneToMany(mappedBy = "cat")
-    @JsonIgnoreProperties({"cat"})
+
+    @ManyToOne
+    @JoinColumn(name = "animal_type_id")
+    @JsonIgnoreProperties({"animals"})
+    private AnimalType animalType;
+
+
+    @OneToMany(mappedBy = "animal")
+    @JsonIgnoreProperties({"animals"})
     private List<Task> tasks;
 
-
-    public Cat(User user, String name, String birthday){
+    public Animal(User user, String name, String birthday){
 
         this.name = name;
         this.birthday = birthday;
@@ -39,7 +43,7 @@ public class Cat {
     }
 
 
-    public Cat(){
+    public Animal(){
 
     }
 

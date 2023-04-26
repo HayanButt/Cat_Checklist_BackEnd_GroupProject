@@ -10,7 +10,7 @@ public enum TaskTypeEnums {
      PLAYTIME("P"),
      LITTERBOX("L"),
      MAINTENANCE("MA"),
-     VETENARYCARE("V");
+     VETERINARYCARE("V");
 
         private String abbreviation;
 

@@ -3,7 +3,6 @@ package com.example.Cat_CheckList_BackEnd_GroupProject.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-import java.sql.ClientInfoStatus;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +16,12 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties({"user"})
-    private List<Cat> cats;
+    private List<Animal> animals;
 
 
     public User(String name){
         this.name = name;
-        this.cats = new ArrayList<>();
+        this.animals = new ArrayList<>();
     }
 
     public User(){
@@ -32,12 +31,12 @@ public class User {
 // GETTERS & SETTERS
 
 
-    public List<Cat> getCats() {
-        return cats;
+    public List<Animal> getAnimals() {
+        return animals;
     }
 
-    public void setCats(List<Cat> cats) {
-        this.cats = cats;
+    public void setAnimals(List<Animal> animals) {
+        this.animals = animals;
     }
 
     public long getId() {

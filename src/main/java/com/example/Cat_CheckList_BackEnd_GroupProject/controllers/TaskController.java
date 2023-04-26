@@ -2,6 +2,7 @@ package com.example.Cat_CheckList_BackEnd_GroupProject.controllers;
 
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.Task;
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.TaskDTO;
+import com.example.Cat_CheckList_BackEnd_GroupProject.models.TaskTypeEnums;
 import com.example.Cat_CheckList_BackEnd_GroupProject.services.TaskServices;
 import com.example.Cat_CheckList_BackEnd_GroupProject.services.UserServices;
 import jakarta.persistence.Access;
@@ -24,7 +25,10 @@ public class TaskController {
     TaskServices taskServices;
 
     @GetMapping
-    public ResponseEntity<List<Task>> getAllTasks(){
+    public ResponseEntity<List<Task>> getAllTasks(@RequestParam(required = false, name = "taskTypeEnum")TaskTypeEnums taskTypeEnums){
+        if(taskTypeEnums != null){
+            return new ResponseEntity<>(taskServices.findByTaskType(taskTypeEnums), HttpStatus.OK);
+        }
         return new ResponseEntity<>(taskServices.getAllTasks(), HttpStatus.OK);
     }
 

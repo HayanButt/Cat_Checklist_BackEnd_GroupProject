@@ -1,12 +1,9 @@
 package com.example.Cat_CheckList_BackEnd_GroupProject.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class CatDTO {
+public class AnimalDTO {
 
 
     private String name;
@@ -18,7 +15,7 @@ public class CatDTO {
     private List<Task> tasks;
 
 
-    public CatDTO( Long userId, String name, String birthday){
+    public AnimalDTO(Long userId, String name, String birthday){
 
         this.name = name;
         this.birthday = birthday;
@@ -28,16 +25,11 @@ public class CatDTO {
     }
 
 
-    public CatDTO(){
+    public AnimalDTO(){
 
     }
 
 //    GETTERS & SETTERS
-
-
-
-
-
 
     public String getName() {
         return name;

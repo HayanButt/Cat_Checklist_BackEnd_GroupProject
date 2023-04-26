@@ -1,10 +1,7 @@
 package com.example.Cat_CheckList_BackEnd_GroupProject.services;
 
-import com.example.Cat_CheckList_BackEnd_GroupProject.models.Cat;
-import com.example.Cat_CheckList_BackEnd_GroupProject.models.Task;
-import com.example.Cat_CheckList_BackEnd_GroupProject.models.TaskDTO;
-import com.example.Cat_CheckList_BackEnd_GroupProject.models.TaskType;
-import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.CatRepository;
+import com.example.Cat_CheckList_BackEnd_GroupProject.models.*;
+import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.AnimalRepository;
 import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.TaskRepository;
 import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.TaskTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +16,7 @@ public class TaskServices {
     TaskRepository taskRepository;
 
     @Autowired
-    CatRepository catRepository;
+    AnimalRepository animalRepository;
 
     @Autowired
     TaskTypeRepository taskTypeRepository;
@@ -37,9 +34,9 @@ public class TaskServices {
     }
 
     public Task saveNewTask(TaskDTO taskDTO) {
-        Cat cat = catRepository.findById(taskDTO.getCatId()).get();
+        Animal animal = animalRepository.findById(taskDTO.getAnimalId()).get();
         TaskType taskType = taskTypeRepository.findById(taskDTO.getTaskTypeId()).get();
-        Task task = new Task(taskDTO.getContent(), taskDTO.isCompleted(), taskDTO.getDueDate(),taskDTO.getPriority(), cat , taskType);
+        Task task = new Task(taskDTO.getContent(), taskDTO.isCompleted(), taskDTO.getDueDate(),taskDTO.getPriority(), animal, taskType);
         return taskRepository.save(task);
     }
 
@@ -63,5 +60,7 @@ public class TaskServices {
         taskRepository.deleteById(id);
     }
 
-
+    public List<Task> findByTaskType(TaskTypeEnums taskTypeEnums){
+        return taskRepository.findByTaskType(taskTypeEnums);
+    }
 }
