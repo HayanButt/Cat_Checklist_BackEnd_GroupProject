@@ -11,6 +11,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Component
@@ -83,28 +84,28 @@ public class DataLoader implements ApplicationRunner {
 
 //        CATS
 
-        Animal animal1 = new Animal(user2, "Theo", "25/12/2021", animalType1);
+        Animal animal1 = new Animal(user2, "Theo", LocalDate.of(2021, 12, 25), animalType1);
         animalServices.addNewAnimal(animal1);
 
-        Animal animal2 = new Animal(user2, "Tora", "07/01/2022", animalType1);
+        Animal animal2 = new Animal(user2, "Tora", LocalDate.of(2022, 1,7), animalType1);
         animalServices.addNewAnimal(animal2);
 
-        Animal animal3 = new Animal(user1, "Lina", "25/08/2022", animalType1);
+        Animal animal3 = new Animal(user1, "Lina", LocalDate.of(2022, 8, 25), animalType1);
         animalServices.addNewAnimal(animal3);
 
-        Animal animal4 = new Animal(user3, "Wilbur", "14/07/2016", animalType1);
+        Animal animal4 = new Animal(user3, "Wilbur", LocalDate.of(2016, 7, 14), animalType1);
         animalServices.addNewAnimal(animal4);
 
-        Animal animal5 = new Animal(user4, "Nicky", "16/05/2019", animalType1);
+        Animal animal5 = new Animal(user4, "Nicky", LocalDate.of(2019, 5, 16), animalType1);
         animalServices.addNewAnimal(animal5);
 
-        Animal animal6 = new Animal(user3, "Percy", "10/06/2014", animalType2);
+        Animal animal6 = new Animal(user3, "Percy", LocalDate.of(2014, 6, 10), animalType2);
         animalServices.addNewAnimal(animal6);
 
-        Animal animal7 = new Animal(user3, "Lulu", "08/05/2010", animalType2);
+        Animal animal7 = new Animal(user3, "Lulu", LocalDate.of(2010, 5,8), animalType2);
         animalServices.addNewAnimal(animal7);
 
-        Animal animal8 = new Animal(user4, "Phil", "15/04/2016", animalType3);
+        Animal animal8 = new Animal(user4, "Phil", LocalDate.of(2016,4,15), animalType3);
         animalServices.addNewAnimal(animal8);
 
 //      TASKTYPE

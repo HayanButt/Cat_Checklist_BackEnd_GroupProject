@@ -3,6 +3,7 @@ package com.example.Cat_CheckList_BackEnd_GroupProject.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Animal {
     @Column
     private String name;
     @Column
-    private String birthday;
+    private LocalDate birthday;
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({"animals"})
@@ -33,7 +34,7 @@ public class Animal {
     @JsonIgnoreProperties({"animals"})
     private List<Task> tasks;
 
-    public Animal(User user, String name, String birthday, AnimalType animalType){
+    public Animal(User user, String name, LocalDate birthday, AnimalType animalType){
         this.name = name;
         this.birthday = birthday;
         this.tasks = new ArrayList<>();
@@ -65,11 +66,11 @@ public class Animal {
         this.name = name;
     }
 
-    public String getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

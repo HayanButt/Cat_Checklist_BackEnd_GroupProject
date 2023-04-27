@@ -1,5 +1,6 @@
 package com.example.Cat_CheckList_BackEnd_GroupProject.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class AnimalDTO {
 
     private String name;
 
-    private String birthday;
+    private LocalDate birthday;
 
     private Long userId;
 
@@ -17,7 +18,7 @@ public class AnimalDTO {
     private Long animalTypeId;
 
 
-    public AnimalDTO(Long userId, String name, String birthday, Long animalTypeId){
+    public AnimalDTO(Long userId, String name, LocalDate birthday, Long animalTypeId){
         this.name = name;
         this.birthday = birthday;
         this.tasks = new ArrayList<>();
@@ -41,11 +42,11 @@ public class AnimalDTO {
         this.name = name;
     }
 
-    public String getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
