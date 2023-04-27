@@ -36,6 +36,41 @@ There are 4 one to many relationships:
 ## UML and ERD
 ![UML](https://user-images.githubusercontent.com/126498385/234849711-ce070932-bb02-4236-960c-da685652c6f8.png)
 
+![ERD](https://user-images.githubusercontent.com/126498385/234849953-0981fac0-65b0-426d-830a-0cea8afb75f6.png)
+
+## Tech Stack
+<ul>
+<li>Intellij IDEA (JDK 17)</li>
+<li>PostgreSQL</li>
+<li>Spring Boot</li>
+<li>Postico</li>
+<li>Postman</li>
+</ul>
+
+## SetUp Instructions 
+<ol>
+<li>Ensure the following are installed on your machine:</li>
+<ul>
+<li>Intellij IDEA (JDK 17)</li>
+<li>PostgreSQL</li>
+<li>Spring Boot</li>
+<li>Postico</li>
+<li>Postman</li>
+</ul>
+
+<li> Clone the repository from GitHub. Scroll to the top of this page and click on the green Code button. Ensure SSH is selected and copy the link provided. In your terminal, perform the following command:
+git clone git@github.com:Yasmin-H/Cat_Checklist_BackEnd_GroupProject.git</li>
+
+<li> Create a new PostgreSQL database named 'Cat_Checklist' anywhere in your terminal.</li>
+createdb Cat_Checklist
+
+<li> Via Intellij IDEA, run the CatChecklistApiApplication and make sure the API is running on port 8080.</li>
+
+<li> Via Postman, create a new collection called Animal Task Manager and add requests using the 'Postman Instructions' provided below.</li>
+  
+ ## PostMan Instructions 
+  
+
 
 
 
