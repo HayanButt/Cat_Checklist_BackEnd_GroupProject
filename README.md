@@ -59,7 +59,7 @@ There are 4 one to many relationships:
 </ul>
 
 <li> Clone the repository from GitHub. Scroll to the top of this page and click on the green Code button. Ensure SSH is selected and copy the link provided. In your terminal, perform the following command:
-git clone git@github.com:Yasmin-H/Cat_Checklist_BackEnd_GroupProject.git</li>
+git clone git@github.com:Yasmin-H/Cat_Checklist_BackEnd_GroupProject.git </li>
 
 <li> Create a new PostgreSQL database named 'Cat_Checklist' anywhere in your terminal.</li>
 createdb Cat_Checklist
@@ -69,6 +69,27 @@ createdb Cat_Checklist
 <li> Via Postman, create a new collection called Animal Task Manager and add requests using the 'Postman Instructions' provided below.</li>
   
  ## PostMan Instructions 
+ ### GET(INDEX)
+ #### GetAllUsers - This GET request retreives all the users
+  Method: GET
+  Endpoint : /users
+  URL: http://localhost:8080/users
+  
+  #### GetAllAnimals - This GET request retreives all the animals
+  Method: GET
+  Endpoint : /animals
+  URL: http://localhost:8080/animals
+ 
+   
+ #### GetAllTasks - This GET request retreives all the tasks
+  Method: GET
+  Endpoint : /tasks
+  URL: http://localhost:8080/tasks
+  
+  
+  
+  
+  
   
 
 
