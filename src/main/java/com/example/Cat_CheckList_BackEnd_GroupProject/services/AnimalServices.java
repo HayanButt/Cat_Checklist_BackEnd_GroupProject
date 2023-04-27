@@ -2,8 +2,10 @@ package com.example.Cat_CheckList_BackEnd_GroupProject.services;
 
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.Animal;
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.AnimalDTO;
+import com.example.Cat_CheckList_BackEnd_GroupProject.models.AnimalType;
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.User;
 import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.AnimalRepository;
+import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.AnimalTypeRepository;
 import com.example.Cat_CheckList_BackEnd_GroupProject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,9 @@ public class AnimalServices {
     AnimalRepository animalRepository;
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    AnimalTypeRepository animalTypeRepository;
     public void addNewAnimal(Animal animal){
         animalRepository.save(animal);
     }
@@ -33,7 +38,8 @@ public class AnimalServices {
     public Animal saveNewAnimal(AnimalDTO animalDTO) {
 
         User user = userRepository.findById(animalDTO.getUserId()).get();
-        Animal animal = new Animal(user,animalDTO.getName(),animalDTO.getBirthday(), animalDTO.getAnimalType());
+        
+        Animal animal = new Animal(user,animalDTO.getName(),animalDTO.getBirthday(), animalTypeRepository.findById(animalDTO.getAnimalTypeId()).get());
         return animalRepository.save(animal);
     }
 

@@ -14,15 +14,15 @@ public class AnimalDTO {
 
     private List<Task> tasks;
 
-    private AnimalType animalType;
+    private Long animalTypeId;
 
 
-    public AnimalDTO(Long userId, String name, String birthday){
+    public AnimalDTO(Long userId, String name, String birthday, Long animalTypeId){
         this.name = name;
         this.birthday = birthday;
         this.tasks = new ArrayList<>();
         this.userId = userId;
-        this.animalType = new AnimalType();
+        this.animalTypeId = animalTypeId;
 
     }
 
@@ -65,11 +65,11 @@ public class AnimalDTO {
         this.tasks = tasks;
     }
 
-    public AnimalType getAnimalType() {
-        return animalType;
+    public Long getAnimalTypeId() {
+        return animalTypeId;
     }
 
-    public void setAnimalType(AnimalType animalType) {
-        this.animalType = animalType;
+    public void setAnimalTypeId(Long animalTypeId) {
+        this.animalTypeId = animalTypeId;
     }
 }
