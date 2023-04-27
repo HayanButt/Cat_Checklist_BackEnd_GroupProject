@@ -25,6 +25,7 @@ public class TaskController {
     @Autowired
     TaskServices taskServices;
 
+//    Index
     @GetMapping
     public ResponseEntity<List<Task>> getAllTasks(@RequestParam(required = false) TaskType taskTypeId){
         if(taskTypeId != null){
@@ -33,23 +34,27 @@ public class TaskController {
         return new ResponseEntity<>(taskServices.getAllTasks(), HttpStatus.OK);
     }
 
+//    Show
     @GetMapping(value = "/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable long id){
         return new ResponseEntity<>(taskServices.getTaskById(id), HttpStatus.OK);
     }
 
+//    Create
     @PostMapping
     public ResponseEntity<Task> addNewTask(@RequestBody TaskDTO taskDTO){
         Task task = taskServices.saveNewTask(taskDTO);
         return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
 
+//    Update
     @PutMapping(value = "/{id}")
     public ResponseEntity<Task> updateTask(@RequestBody TaskDTO taskDTO, @PathVariable Long id){
         Task task = taskServices.updateTask(taskDTO, id);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
 
+//    Destroy
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> deleteTask (@PathVariable Long id){
         taskServices.deleteTask(id);

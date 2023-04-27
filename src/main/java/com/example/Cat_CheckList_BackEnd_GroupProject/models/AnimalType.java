@@ -19,6 +19,7 @@ public class AnimalType {
     @Column
     private String animalTypeName;
 
+//  Creates an implicit relationship between AnimalType and TaskTypeEnums.
     @ElementCollection(targetClass = TaskTypeEnums.class)
     @Enumerated(EnumType.STRING)
     @JoinTable(name = "availableTasks", joinColumns = @JoinColumn(name = "animal_type_id"))
