@@ -38,10 +38,4 @@ public class AnimalController {
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
-
-
-
-
-
-
 }

@@ -60,7 +60,7 @@ public class TaskServices {
         taskRepository.deleteById(id);
     }
 
-    public List<Task> findByTaskType(TaskTypeEnums taskTypeEnums){
-        return taskRepository.findByTaskType(taskTypeEnums);
+    public List<Task> findByTaskType(TaskType taskTypeId){
+        return taskRepository.findByTaskType(taskTypeId);
     }
 }

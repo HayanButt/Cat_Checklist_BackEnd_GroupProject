@@ -14,6 +14,7 @@ public class TaskType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "task_type_name")
+    @Enumerated(EnumType.STRING)
     private TaskTypeEnums taskTypeName;
     @OneToMany(mappedBy = "taskType")
     @JsonIgnoreProperties({"task_types"})

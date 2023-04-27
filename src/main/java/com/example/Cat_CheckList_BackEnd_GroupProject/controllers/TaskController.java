@@ -2,6 +2,7 @@ package com.example.Cat_CheckList_BackEnd_GroupProject.controllers;
 
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.Task;
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.TaskDTO;
+import com.example.Cat_CheckList_BackEnd_GroupProject.models.TaskType;
 import com.example.Cat_CheckList_BackEnd_GroupProject.models.TaskTypeEnums;
 import com.example.Cat_CheckList_BackEnd_GroupProject.services.TaskServices;
 import com.example.Cat_CheckList_BackEnd_GroupProject.services.UserServices;
@@ -25,9 +26,9 @@ public class TaskController {
     TaskServices taskServices;
 
     @GetMapping
-    public ResponseEntity<List<Task>> getAllTasks(@RequestParam(required = false, name = "taskTypeEnum")TaskTypeEnums taskTypeEnums){
-        if(taskTypeEnums != null){
-            return new ResponseEntity<>(taskServices.findByTaskType(taskTypeEnums), HttpStatus.OK);
+    public ResponseEntity<List<Task>> getAllTasks(@RequestParam(required = false) TaskType taskTypeId){
+        if(taskTypeId != null){
+            return new ResponseEntity<>(taskServices.findByTaskType(taskTypeId), HttpStatus.OK);
         }
         return new ResponseEntity<>(taskServices.getAllTasks(), HttpStatus.OK);
     }
@@ -42,15 +43,6 @@ public class TaskController {
         Task task = taskServices.saveNewTask(taskDTO);
         return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
-
-//    @PatchMapping(value = "/{id}")
-//    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestParam Optional<String> content, @RequestParam Optional<Boolean> completed){
-//        if(content.isPresent()){
-//            return new ResponseEntity<>(taskServices.updateTaskContent(id, content.get()), HttpStatus.OK);
-//        } if (completed.isPresent()){
-//            return new ResponseEntity<>(taskServices.markAsCompleted(id, completed.get()), HttpStatus.OK);
-//        } return new ResponseEntity<>(taskServices.getTaskById(id), HttpStatus.OK);
-//    }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<Task> updateTask(@RequestBody TaskDTO taskDTO, @PathVariable Long id){

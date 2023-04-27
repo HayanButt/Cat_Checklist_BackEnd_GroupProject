@@ -59,7 +59,7 @@ public class TaskDTO {
         return animalId;
     }
 
-    public void setAnimalId(Long catId) {
+    public void setAnimalId(Long animalId) {
         this.animalId = animalId;
     }
 
