@@ -174,9 +174,9 @@ There are 4 one to many relationships:
   
   ## Collaborators
  <ul>
-<li>Thibyaa Mahasivam (GitHub:) </li>
+<li>Thibyaa Mahasivam (GitHub: thibyaa) </li>
 <li>Yasmin Hiadar (GitHub: Yasmin-H)</li>
-<li>Alex Levendis-Takakis (GitHub:)</li>
+<li>Alex Levendis-Takakis (GitHub: alexlt3001)</li>
 <li>Tharahan Tharmaraja (GitHub: tharahan04) </li>
 </ul>
   
