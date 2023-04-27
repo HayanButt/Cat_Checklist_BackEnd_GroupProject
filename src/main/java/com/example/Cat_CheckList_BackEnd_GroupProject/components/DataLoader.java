@@ -30,7 +30,7 @@ public class DataLoader implements ApplicationRunner {
     TaskTypeServices taskTypeServices;
 
     @Override
-    public void run(ApplicationArguments args) throws Exception{
+    public void run(ApplicationArguments args) throws Exception {
 
 //        USERS
 
@@ -46,30 +46,65 @@ public class DataLoader implements ApplicationRunner {
         User user4 = new User("Tharahan");
         userServices.addNewUser(user4);
 
+//        ANIMAL TYPE
+        AnimalType animalType1 = new AnimalType("Cat");
+        AnimalType animalType2 = new AnimalType("Dog");
+        AnimalType animalType3 = new AnimalType("Fish");
+
+//        CAT TYPE
+        ArrayList<TaskTypeEnums> catTasks = new ArrayList<>();
+        catTasks.add(TaskTypeEnums.LITTERBOX);
+        catTasks.add(TaskTypeEnums.FEEDING);
+        catTasks.add(TaskTypeEnums.GROOMING);
+        catTasks.add(TaskTypeEnums.MEDICATION);
+        catTasks.add(TaskTypeEnums.WATER);
+        catTasks.add(TaskTypeEnums.PLAYTIME);
+        catTasks.add(TaskTypeEnums.VETERINARYCARE);
+        animalType1.setAvailableTasks(catTasks);
+        animalTypeRepository.save(animalType1);
+
+//        DOG TYPE
+        ArrayList<TaskTypeEnums> dogTasks = new ArrayList<>();
+        dogTasks.add(TaskTypeEnums.MEDICATION);
+        dogTasks.add(TaskTypeEnums.FEEDING);
+        dogTasks.add(TaskTypeEnums.GROOMING);
+        dogTasks.add(TaskTypeEnums.WATER);
+        dogTasks.add(TaskTypeEnums.PLAYTIME);
+        dogTasks.add(TaskTypeEnums.VETERINARYCARE);
+        animalType2.setAvailableTasks(dogTasks);
+        animalTypeRepository.save(animalType2);
+
+//        FISH TYPE
+        ArrayList<TaskTypeEnums> fishTasks = new ArrayList<>();
+        fishTasks.add(TaskTypeEnums.MAINTENANCE);
+        fishTasks.add(TaskTypeEnums.FEEDING);
+        animalType3.setAvailableTasks(fishTasks);
+        animalTypeRepository.save(animalType3);
+
 //        CATS
 
-      Animal animal1 = new Animal(user2, "Theo", "25/12/2021");
-      animalServices.addNewAnimal(animal1);
+        Animal animal1 = new Animal(user2, "Theo", "25/12/2021", animalType1);
+        animalServices.addNewAnimal(animal1);
 
-      Animal animal2 = new Animal(user2, "Tora", "07/01/2022");
-      animalServices.addNewAnimal(animal2);
+        Animal animal2 = new Animal(user2, "Tora", "07/01/2022", animalType1);
+        animalServices.addNewAnimal(animal2);
 
-      Animal animal3 = new Animal(user1, "Lina", "25/08/2022");
-      animalServices.addNewAnimal(animal3);
+        Animal animal3 = new Animal(user1, "Lina", "25/08/2022", animalType1);
+        animalServices.addNewAnimal(animal3);
 
-      Animal animal4 = new Animal(user3, "Wilbur", "14/07/2016");
-      animalServices.addNewAnimal(animal4);
+        Animal animal4 = new Animal(user3, "Wilbur", "14/07/2016", animalType1);
+        animalServices.addNewAnimal(animal4);
 
-      Animal animal5 = new Animal(user4, "Nicky", "16/05/2019");
-      animalServices.addNewAnimal(animal5);
+        Animal animal5 = new Animal(user4, "Nicky", "16/05/2019", animalType1);
+        animalServices.addNewAnimal(animal5);
 
-      Animal animal6 = new Animal(user3, "Percy", "10/06/2014");
-      animalServices.addNewAnimal(animal6);
+        Animal animal6 = new Animal(user3, "Percy", "10/06/2014", animalType2);
+        animalServices.addNewAnimal(animal6);
 
-      Animal animal7 = new Animal(user3, "Lulu", "08/05/2010");
-      animalServices.addNewAnimal(animal7);
+        Animal animal7 = new Animal(user3, "Lulu", "08/05/2010", animalType2);
+        animalServices.addNewAnimal(animal7);
 
-        Animal animal8 = new Animal(user4, "Phil", "15/04/2016");
+        Animal animal8 = new Animal(user4, "Phil", "15/04/2016", animalType3);
         animalServices.addNewAnimal(animal8);
 
 //      TASKTYPE
@@ -119,41 +154,5 @@ public class DataLoader implements ApplicationRunner {
         taskServices.saveTask(task9);
         Task task10 = new Task("take to the vet", false, "26.04.2023", Priority.LOW, animal3, taskType8);
         taskServices.saveTask(task10);
-
-//        ANIMAL TYPE
-        AnimalType animalType1 = new AnimalType("Cat");
-        AnimalType animalType2 = new AnimalType("Dog");
-        AnimalType animalType3 = new AnimalType("Fish");
-
-//        CAT TYPE
-        ArrayList<TaskTypeEnums> catTasks = new ArrayList<>();
-        catTasks.add(TaskTypeEnums.LITTERBOX);
-        catTasks.add(TaskTypeEnums.FEEDING);
-        catTasks.add(TaskTypeEnums.GROOMING);
-        catTasks.add(TaskTypeEnums.MEDICATION);
-        catTasks.add(TaskTypeEnums.WATER);
-        catTasks.add(TaskTypeEnums.PLAYTIME);
-        catTasks.add(TaskTypeEnums.VETERINARYCARE);
-        animalType1.setAvailableTasks(catTasks);
-        animalTypeRepository.save(animalType1);
-
-//        DOG TYPE
-        ArrayList<TaskTypeEnums> dogTasks = new ArrayList<>();
-        dogTasks.add(TaskTypeEnums.MEDICATION);
-        dogTasks.add(TaskTypeEnums.FEEDING);
-        dogTasks.add(TaskTypeEnums.GROOMING);
-        dogTasks.add(TaskTypeEnums.WATER);
-        dogTasks.add(TaskTypeEnums.PLAYTIME);
-        dogTasks.add(TaskTypeEnums.VETERINARYCARE);
-        animalType2.setAvailableTasks(dogTasks);
-        animalTypeRepository.save(animalType2);
-
-//        FISH TYPE
-        ArrayList<TaskTypeEnums> fishTasks = new ArrayList<>();
-        fishTasks.add(TaskTypeEnums.MAINTENANCE);
-        fishTasks.add(TaskTypeEnums.FEEDING);
-        animalType3.setAvailableTasks(fishTasks);
-        animalTypeRepository.save(animalType3);
-
     }
 }

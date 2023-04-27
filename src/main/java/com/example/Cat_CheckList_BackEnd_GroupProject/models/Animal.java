@@ -33,12 +33,12 @@ public class Animal {
     @JsonIgnoreProperties({"animals"})
     private List<Task> tasks;
 
-    public Animal(User user, String name, String birthday){
-
+    public Animal(User user, String name, String birthday, AnimalType animalType){
         this.name = name;
         this.birthday = birthday;
         this.tasks = new ArrayList<>();
         this.user = user;
+        this.animalType = animalType;
 
     }
 
@@ -48,7 +48,6 @@ public class Animal {
     }
 
 //    GETTERS & SETTERS
-
 
     public long getId() {
         return id;
@@ -95,6 +94,11 @@ public class Animal {
         this.user = user;
     }
 
+    public AnimalType getAnimalType() {
+        return animalType;
+    }
 
-
+    public void setAnimalType(AnimalType animalType) {
+        this.animalType = animalType;
+    }
 }

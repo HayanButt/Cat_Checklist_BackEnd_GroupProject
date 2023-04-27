@@ -33,7 +33,7 @@ public class AnimalServices {
     public Animal saveNewAnimal(AnimalDTO animalDTO) {
 
         User user = userRepository.findById(animalDTO.getUserId()).get();
-        Animal animal = new Animal(user,animalDTO.getName(),animalDTO.getBirthday());
+        Animal animal = new Animal(user,animalDTO.getName(),animalDTO.getBirthday(), animalDTO.getAnimalType());
         return animalRepository.save(animal);
     }
 
