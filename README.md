@@ -59,10 +59,10 @@ There are 4 one to many relationships:
 </ul>
 
 <li> Clone the repository from GitHub. Scroll to the top of this page and click on the green Code button. Ensure SSH is selected and copy the link provided. In your terminal, perform the following command:
-git clone git@github.com:Yasmin-H/Cat_Checklist_BackEnd_GroupProject.git </li>
+  <pre><code>git clone git@github.com:Yasmin-H/Cat_Checklist_BackEnd_GroupProject.git</code></pre> </li>
 
 <li> Create a new PostgreSQL database named 'Cat_Checklist' anywhere in your terminal.</li>
-createdb Cat_Checklist
+  <pre> <code>createdb Cat_Checklist </code></pre>
 
 <li> Via Intellij IDEA, run the CatChecklistApiApplication and make sure the API is running on port 8080.</li>
 
@@ -71,20 +71,82 @@ createdb Cat_Checklist
  ## PostMan Instructions 
  ### GET(INDEX)
  #### GetAllUsers - This GET request retreives all the users
-  Method: GET
+  <pre><code> Method: GET
   Endpoint : /users
-  URL: http://localhost:8080/users
+  URL: http://localhost:8080/users</code></pre>
   
   #### GetAllAnimals - This GET request retreives all the animals
-  Method: GET
+  <pre><code> Method: GET
   Endpoint : /animals
-  URL: http://localhost:8080/animals
+  URL: http://localhost:8080/animals</code></pre>
  
    
  #### GetAllTasks - This GET request retreives all the tasks
-  Method: GET
+  <pre><code> Method: GET
   Endpoint : /tasks
-  URL: http://localhost:8080/tasks
+  URL: http://localhost:8080/tasks </code></pre>
+  
+  
+  ### GET(SHOW) - The URL is the only change where you input the iD.
+ #### GET Users - This GET request retreives all the users
+  <pre><code> Method: GET
+  Endpoint : /users
+  URL: http://localhost:8080/users/1</code></pre>
+  
+  #### GET Animals - This GET request retreives all the animals
+  <pre><code> Method: GET
+  Endpoint : /animals
+  URL: http://localhost:8080/animals/1</code></pre>
+ 
+   
+ #### GET Tasks - This GET request retreives all the tasks
+  <pre><code> Method: GET
+  Endpoint : /tasks
+  URL: http://localhost:8080/tasks/1 </code></pre>
+  
+  
+  ### POST(CREATE)- We will need to use the Request Body to input the details required for each user/animal/task.
+  The request body must be in JSON format in the raw section. The status code 201 will appear once the new user/animal/task is created.
+ 
+  #### POST Users - This POST request adds a new user to the list
+  <pre><code> Method: POST
+  Endpoint : /users
+  URL: http://localhost:8080/users
+  RequestBody example: 
+  {
+    "name" : "Bob"
+  }                   </code></pre>
+  
+  
+  #### POSTAnimals - This POST request adds a new animal to the list
+  <pre><code> Method: POST
+  Endpoint : /animals
+  URL: http://localhost:8080/animals
+  RequestBody example: 
+  {
+    "userId" : 4,
+    "name" : "Felix",
+    "birthday" : "2020-05-05",
+    "animalTypeId" : 1
+  }                    </code></pre>
+ 
+   
+  #### POST Tasks - This POST request adds a new task to the list
+  <pre><code> Method: POST
+  Endpoint : /tasks
+  URL: http://localhost:8080/tasks 
+  RequestBody example:
+  {
+    "content" : "cleaning the litterbox",
+    "dueDate" : "28.04.2023",
+    "priority" : "HIGH",
+    "completed" : false,
+    "animalId" : 2,
+    "taskTypeId" : 3
+ }                   </code></pre>
+  
+  
+  
   
   
   
