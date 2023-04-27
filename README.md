@@ -89,8 +89,26 @@ There are 4 one to many relationships:
   URL: http://localhost:8080/tasks </code></pre>
   
   
+  ### GET(SHOW)
+  - The URL gets a userId/ animalId/taskId added at the end.
+ #### GET Users - The GET request retrieves all users
+  <pre><code> Method: GET
+  Endpoint : /users
+  URL: http://localhost:8080/users</code></pre>
   
-  ### POST(CREATE)
+  #### GET Animals -The GET request retrieves all animals
+  <pre><code> Method: GET
+  Endpoint : /animals
+  URL: http://localhost:8080/animals</code></pre>
+ 
+  #### GET Tasks - The GET request retrieves all tasks 
+  <pre><code> Method: GET
+  Endpoint : /tasks
+  URL: http://localhost:8080/tasks </code></pre>
+  
+  
+  
+   ### POST(CREATE)
   - We will need to use the Request Body to input the details required for each user/animal/task.
   The request body must be in JSON format in the raw section. The status code 201 will appear once the new user/animal/task is created.
  
@@ -131,7 +149,7 @@ There are 4 one to many relationships:
     "taskTypeId" : 3
  }                   </code></pre>
   
-  
+  ### PUT (UPDATE)
   #### PUT Tasks - This PUT request changes the content for each task iD by changing the URL.
   <pre><code> Method: PUT
   Endpoint : /tasks
@@ -176,7 +194,7 @@ There are 4 one to many relationships:
   ## Collaborators
  <ul>
 <li>Thibyaa Mahasivam (GitHub: thibyaa) </li>
-<li>Yasmin Hiadar (GitHub: Yasmin-H)</li>
+<li>Yasmin Haidar (GitHub: Yasmin-H)</li>
 <li>Alex Levendis-Takakis (GitHub: alexlt3001)</li>
 <li>Tharahan Tharmaraja (GitHub: tharahan04) </li>
 </ul>
