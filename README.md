@@ -70,7 +70,8 @@ There are 4 one to many relationships:
   
 
   ## PostMan Instructions 
- ### GET(INDEX)
+ 
+  ### GET(INDEX)
   - The URL gets a /users, /animals and /tasks added at the end.
  #### GET Users - The GET request retrieves all users
   <pre><code> Method: GET
@@ -82,8 +83,7 @@ There are 4 one to many relationships:
   Endpoint : /animals
   URL: http://localhost:8080/animals</code></pre>
  
-   
- #### GET Tasks - The GET request retrieves all tasks 
+  #### GET Tasks - The GET request retrieves all tasks 
   <pre><code> Method: GET
   Endpoint : /tasks
   URL: http://localhost:8080/tasks </code></pre>
@@ -94,7 +94,7 @@ There are 4 one to many relationships:
   - We will need to use the Request Body to input the details required for each user/animal/task.
   The request body must be in JSON format in the raw section. The status code 201 will appear once the new user/animal/task is created.
  
-  #### POST Users - This POST request adds a new user to the list
+  #### POST Users - This POST request adds a new user to the list.
   <pre><code> Method: POST
   Endpoint : /users
   URL: http://localhost:8080/users
@@ -104,7 +104,7 @@ There are 4 one to many relationships:
   }                   </code></pre>
   
   
-  #### POST Animals - This POST request adds a new animal to the list
+  #### POST Animals - This POST request adds a new animal to the list.
   <pre><code> Method: POST
   Endpoint : /animals
   URL: http://localhost:8080/animals
@@ -117,7 +117,7 @@ There are 4 one to many relationships:
   }                    </code></pre>
  
    
-  #### POST Tasks - This POST request adds a new task to the list
+  #### POST Tasks - This POST request adds a new task to the list.
   <pre><code> Method: POST
   Endpoint : /tasks
   URL: http://localhost:8080/tasks 
@@ -144,7 +144,8 @@ There are 4 one to many relationships:
     "completed" : true
   }                   </code></pre>
   
-  
+  ### DELETE (DESTORY)
+  - By entering the userId/animalId/taskId into the URL that you want to delete
   #### DELETE User - This DELETE request destroys any iD in users by entering the userId in the URL.
   <pre><code> Method: DELETE
   Endpoint : /tasks
@@ -155,14 +156,14 @@ There are 4 one to many relationships:
   <pre><code> Method: DELETE
   Endpoint : /tasks
   URL: http://localhost:8080/animals/3
-  So the userId 3 will be erased.   </code></pre> 
+  So the animalId 3 will be erased.   </code></pre> 
   
   
   #### DELETE Task - This DELETE request destroys any iD in tasks by entering the taskId in the URL.
   <pre><code> Method: DELETE
   Endpoint : /tasks
   URL: http://localhost:8080/tasks/3
-  So the userId 3 will be erased.   </code></pre>
+  So the taskId 3 will be erased.   </code></pre>
   
   
   ## Dependencies
