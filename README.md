@@ -68,44 +68,30 @@ There are 4 one to many relationships:
 
 <li> Via Postman, create a new collection called Animal Task Manager and add requests using the 'Postman Instructions' provided below.</li>
   
- ## PostMan Instructions 
+
+  ## PostMan Instructions 
  ### GET(INDEX)
- #### GetAllUsers - This GET request retreives all the users
+  - The URL gets a /users, /animals and /tasks added at the end.
+ #### GET Users - The GET request retrieves all users
   <pre><code> Method: GET
   Endpoint : /users
   URL: http://localhost:8080/users</code></pre>
   
-  #### GetAllAnimals - This GET request retreives all the animals
+  #### GET Animals -The GET request retrieves all animals
   <pre><code> Method: GET
   Endpoint : /animals
   URL: http://localhost:8080/animals</code></pre>
  
    
- #### GetAllTasks - This GET request retreives all the tasks
+ #### GET Tasks - The GET request retrieves all tasks 
   <pre><code> Method: GET
   Endpoint : /tasks
   URL: http://localhost:8080/tasks </code></pre>
   
   
-  ### GET(SHOW) - The URL is the only change where you input the iD.
- #### GET Users - This GET request retreives all the users
-  <pre><code> Method: GET
-  Endpoint : /users
-  URL: http://localhost:8080/users/1</code></pre>
   
-  #### GET Animals - This GET request retreives all the animals
-  <pre><code> Method: GET
-  Endpoint : /animals
-  URL: http://localhost:8080/animals/1</code></pre>
- 
-   
- #### GET Tasks - This GET request retreives all the tasks
-  <pre><code> Method: GET
-  Endpoint : /tasks
-  URL: http://localhost:8080/tasks/1 </code></pre>
-  
-  
-  ### POST(CREATE)- We will need to use the Request Body to input the details required for each user/animal/task.
+  ### POST(CREATE)
+  - We will need to use the Request Body to input the details required for each user/animal/task.
   The request body must be in JSON format in the raw section. The status code 201 will appear once the new user/animal/task is created.
  
   #### POST Users - This POST request adds a new user to the list
@@ -118,7 +104,7 @@ There are 4 one to many relationships:
   }                   </code></pre>
   
   
-  #### POSTAnimals - This POST request adds a new animal to the list
+  #### POST Animals - This POST request adds a new animal to the list
   <pre><code> Method: POST
   Endpoint : /animals
   URL: http://localhost:8080/animals
@@ -144,6 +130,60 @@ There are 4 one to many relationships:
     "animalId" : 2,
     "taskTypeId" : 3
  }                   </code></pre>
+  
+  
+  #### PUT Tasks - This PUT request changes the content for each task iD by changing the URL.
+  <pre><code> Method: PUT
+  Endpoint : /tasks
+  URL: http://localhost:8080/tasks/1 
+  RequestBody example:
+  {
+    "content" : "changing the water",
+    "dueDate" : "27.04.2023",
+    "priority" : "MEDIUM",
+    "completed" : true
+  }                   </code></pre>
+  
+  
+  #### DELETE User - This DELETE request destroys any iD in users by entering the userId in the URL.
+  <pre><code> Method: DELETE
+  Endpoint : /tasks
+  URL: http://localhost:8080/users/3
+  So the userId 3 will be erased.   </code></pre>
+  
+   #### DELETE Animal - This DELETE request destroys any iD in animals by entering the animalId in the URL.
+  <pre><code> Method: DELETE
+  Endpoint : /tasks
+  URL: http://localhost:8080/animals/3
+  So the userId 3 will be erased.   </code></pre> 
+  
+  
+  #### DELETE Task - This DELETE request destroys any iD in tasks by entering the taskId in the URL.
+  <pre><code> Method: DELETE
+  Endpoint : /tasks
+  URL: http://localhost:8080/tasks/3
+  So the userId 3 will be erased.   </code></pre>
+  
+  
+  ## Dependencies
+  <ul>
+<li>Spring Data JPA</li>
+<li>Spring Web</li>
+<li>SpringBoot DevTools</li>
+</ul>
+  
+  ## Collaborators
+ <ul>
+<li>Thibyaa Mahasivam (GitHub:) </li>
+<li>Yasmin Hiadar (GitHub: Yasmin-H)</li>
+<li>Alex Levendis-Takakis (GitHub:)</li>
+<li>Tharahan Tharmaraja (GitHub: tharahan04) </li>
+</ul>
+  
+  
+  
+  
+  
   
   
   
