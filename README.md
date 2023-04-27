@@ -15,16 +15,15 @@ This represents a class which enables users to be added and managed within the d
 ### Animals:
 This represents a class which enables the user to input their animal's name, birthday and the type of animal they own.
 
-### AnimalType: 
-This class represents the list of animals a user has put in as well as the available tasks for each animal type. 
+### Animal Type: 
+This class represents different Animal Types a user can choose from eg Cat, Dog, Hedgehog etc. By having this additional steps, only the relevant associated TaskTypes will be present for the user when setting up a new task.
 For example, Tharahan owns a fish which has MAINTENANCE and FEEDING as the available tasks. 
 
 ### Task:
-This class is where the user is able to input the description of the task, assign a due date, whether it is completed or not and priority (HIGH, MEDIUM, LOW)
-for the animals.
+This class is where the user is able to input the description of the task, assign a due date, whether it is completed or not and set the priority of the task (HIGH, MEDIUM, LOW) for their chosen pet.
 
-### TaskType: 
-This class contains the list of TaskTypeEnums which have been pre-listed for the user to select from.
+### Task Type: 
+This class allows implementation of the TaskTypeEnums which have been pre-listed for the user to select from.
 
 ## Relationships
 There are 4 one to many relationships:
@@ -68,12 +67,9 @@ There are 4 one to many relationships:
 
 <li> Via Postman, create a new collection called Animal Task Manager and add requests using the 'Postman Instructions' provided below.</li>
   
-
   ## PostMan Instructions 
- 
   ### GET(INDEX)
-  - The URL gets a /users, /animals and /tasks added at the end.
- #### GET Users - The GET request retrieves all users
+  #### GET Users - The GET request retrieves all users
   <pre><code> Method: GET
   Endpoint : /users
   URL: http://localhost:8080/users</code></pre>
@@ -87,36 +83,31 @@ There are 4 one to many relationships:
   <pre><code> Method: GET
   Endpoint : /tasks
   URL: http://localhost:8080/tasks </code></pre>
-  
   
   ### GET(SHOW)
-  - The URL gets a userId/ animalId/taskId added at the end.
- #### GET Users - The GET request retrieves all users
+  #### GET Users - The GET request retrieves all users
   <pre><code> Method: GET
-  Endpoint : /users
+  Endpoint : /users/{id}
   URL: http://localhost:8080/users</code></pre>
   
   #### GET Animals -The GET request retrieves all animals
   <pre><code> Method: GET
-  Endpoint : /animals
+  Endpoint : /animals/{id}
   URL: http://localhost:8080/animals</code></pre>
  
   #### GET Tasks - The GET request retrieves all tasks 
   <pre><code> Method: GET
-  Endpoint : /tasks
+  Endpoint : /tasks/{id}
   URL: http://localhost:8080/tasks </code></pre>
   
-  
-  
    ### POST(CREATE)
-  - We will need to use the Request Body to input the details required for each user/animal/task.
-  The request body must be in JSON format in the raw section. The status code 201 will appear once the new user/animal/task is created.
- 
+  We will need to use the Request Body to input the details required for each user/animal/task. The request body must be in JSON format in the raw section.
   #### POST Users - This POST request adds a new user to the list.
   <pre><code> Method: POST
   Endpoint : /users
   URL: http://localhost:8080/users
-  RequestBody example: 
+ 
+ RequestBody example: 
   {
     "name" : "Bob"
   }                   </code></pre>
@@ -126,6 +117,7 @@ There are 4 one to many relationships:
   <pre><code> Method: POST
   Endpoint : /animals
   URL: http://localhost:8080/animals
+  
   RequestBody example: 
   {
     "userId" : 4,
@@ -139,7 +131,8 @@ There are 4 one to many relationships:
   <pre><code> Method: POST
   Endpoint : /tasks
   URL: http://localhost:8080/tasks 
-  RequestBody example:
+ 
+ RequestBody example:
   {
     "content" : "cleaning the litterbox",
     "dueDate" : "28.04.2023",
@@ -149,11 +142,12 @@ There are 4 one to many relationships:
     "taskTypeId" : 3
  }                   </code></pre>
   
-  ### PUT (UPDATE)
-  #### PUT Tasks - This PUT request changes the content for each task iD by changing the URL.
+  ### PUT/PATCH (UPDATE)
+  #### PUT Tasks - Changes all the content for each task id by changing the URL.
   <pre><code> Method: PUT
-  Endpoint : /tasks
+  Endpoint : /tasks/{id}
   URL: http://localhost:8080/tasks/1 
+  
   RequestBody example:
   {
     "content" : "changing the water",
@@ -162,27 +156,27 @@ There are 4 one to many relationships:
     "completed" : true
   }                   </code></pre>
   
+   #### PATCH Users - Allows for the username to be edited.
+  <pre><code> Method: PATCH
+  Endpoint : /users/{id}
+  URL: http://localhost:8080/users/1 </code></pre>
+  
   ### DELETE (DESTORY)
-  - By entering the userId/animalId/taskId into the URL that you want to delete
-  #### DELETE User - This DELETE request destroys any iD in users by entering the userId in the URL.
+  #### DELETE User - Will destroy any user by entering the userId in the URL.
   <pre><code> Method: DELETE
-  Endpoint : /tasks
-  URL: http://localhost:8080/users/3
-  So the userId 3 will be erased.   </code></pre>
+  Endpoint : /users/{id}
+  URL: http://localhost:8080/users/3 </code></pre>
   
-   #### DELETE Animal - This DELETE request destroys any iD in animals by entering the animalId in the URL.
+   #### DELETE Animal - Will destroy any animal by entering the animalId in the URL.
   <pre><code> Method: DELETE
-  Endpoint : /tasks
-  URL: http://localhost:8080/animals/3
-  So the animalId 3 will be erased.   </code></pre> 
+  Endpoint : /animals/{id}
+  URL: http://localhost:8080/animals/3 </code></pre> 
   
   
-  #### DELETE Task - This DELETE request destroys any iD in tasks by entering the taskId in the URL.
+  #### DELETE Task - Will destroy any task by entering the taskId in the URL.
   <pre><code> Method: DELETE
-  Endpoint : /tasks
-  URL: http://localhost:8080/tasks/3
-  So the taskId 3 will be erased.   </code></pre>
-  
+  Endpoint : /tasks/{id}
+  URL: http://localhost:8080/tasks/3 </code></pre>
   
   ## Dependencies
   <ul>
@@ -198,24 +192,3 @@ There are 4 one to many relationships:
 <li>Alex Levendis-Takakis (GitHub: alexlt3001)</li>
 <li>Tharahan Tharmaraja (GitHub: tharahan04) </li>
 </ul>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
